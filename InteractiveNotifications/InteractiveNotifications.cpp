@@ -52,8 +52,8 @@ typedef HandleT<CoTaskMemStringTraits> CoTaskMemString;
 
 const wchar_t Shortcut[] = LR"(Microsoft\Windows\Start Menu\Slack.lnk)";
 
-#define __CSID "B23D2B18-8DD7-403A-B9B7-152B40A1478C"
-#define __PROTOCOL "myapp://"
+#define __CSID "a8399c56-ccca-432b-8350-7d71ab2bfbc6"
+#define __PROTOCOL "/myapp:\/\//gi"
 
 // For the app to be activated from Action Center, it needs to provide a COM server to be called
 // when the notification is activated.  The CLSID of the object needs to be registered with the
@@ -207,7 +207,7 @@ namespace InteractiveNotifications
       // We don't need to worry about overflow here as ::GetModuleFileName won't
       // return anything bigger than the max file system path (much fewer than max of DWORD).
       DWORD dataSize = static_cast<DWORD>((::wcslen(exePath) + 1) * sizeof(WCHAR));
-      auto key = LR"(SOFTWARE\Classes\CLSID\{B23D2B18-8DD7-403A-B9B7-152B40A1478C}\LocalServer32)";
+      auto key = LR"(SOFTWARE\Classes\CLSID\{a8399c56-ccca-432b-8350-7d71ab2bfbc6}\LocalServer32)";
 
       return HRESULT_FROM_WIN32(::RegSetKeyValue(
         HKEY_CURRENT_USER,
